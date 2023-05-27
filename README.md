@@ -27,15 +27,19 @@ To enhance user experience, we have developed OpeninApp, a tool that ensures soc
 - R8: 🔧🔒
 - Proguard: 🛡️🔒
 
-## Installation
+#  💻📲 Installation
 
-To run this project on your local machine, please follow the instructions below:
+To install the Openin Clone app on your Android device, please follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/Openin-Clone.git`
-2. Open the project in Android Studio.
-3. Build and run the project on an emulator or physical device.
+1. Download the APK file from the following link: [Openin Clone APK](insert_link_here)
 
-Please ensure that you have the latest version of Android Studio and the necessary dependencies installed.
+2. Ensure that you have enabled installation from unknown sources on your Android device. You can do this by going to Settings > Security (or Privacy) > Unknown Sources and enabling the option.
+
+3. On your Android device, use a file manager app to navigate to the directory where you saved the APK file.
+
+4. Tap on the APK file to start the installation process. You may be prompted to confirm the installation and accept any necessary permissions. During the installation, you might receive warnings stating that the app is not verified from Google Play Protect. Please ignore these warnings and proceed with the installation.
+
+5. Wait for the installation to complete. Once the installation is finished, you should see the Openin Clone app's icon in your app drawer or on your home screen.
 
 
 Please note that the Openin Clone app does not currently support dark mode. 🌗
