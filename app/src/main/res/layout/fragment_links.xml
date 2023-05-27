@@ -24,7 +24,7 @@
                 android:id="@+id/greet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/inactive_bottom_nav_color"
+                android:textColor="@color/grey_color"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -64,7 +64,7 @@
                         android:layout_height="wrap_content"
 
                         android:text="Overview"
-                        android:textColor="@color/inactive_bottom_nav_color"
+                        android:textColor="@color/grey_color"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="@id/timeline"
@@ -90,7 +90,7 @@
                         app:iconGravity="textEnd"
                         app:iconPadding="10dp"
                         app:iconSize="15dp"
-                        app:iconTint="@color/inactive_bottom_nav_color"
+                        app:iconTint="@color/grey_color"
 
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"

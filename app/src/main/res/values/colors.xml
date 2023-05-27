@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#0E6FFF</color>
-    <color name="inactive_bottom_nav_color">#999CA0</color>
+    <color name="grey_color">#999CA0</color>
     <color name="home_page_bg_color">#F5F5F5</color>
     <color name="light_blue">#EDF4FF</color>
     <color name="medium_blue">#A6C7FF</color>

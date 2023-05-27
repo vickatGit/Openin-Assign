@@ -51,7 +51,7 @@ class fab_circleview: View {
             color = Color.WHITE
             strokeWidth = 0f
             style = Paint.Style.FILL
-            setShadowLayer(10f, 0f, 0f, getResources().getColor(R.color.inactive_bottom_nav_color)) // Adding shadow
+            setShadowLayer(10f, 0f, 0f, getResources().getColor(R.color.grey_color)) // Adding shadow
         }
 
 

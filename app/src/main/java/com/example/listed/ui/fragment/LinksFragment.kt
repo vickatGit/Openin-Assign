@@ -195,7 +195,7 @@ class LinksFragment : Fragment() {
 
         val xAxis: XAxis = lineChart.xAxis
         xAxis.position = XAxis.XAxisPosition.BOTTOM
-        xAxis.textColor = resources.getColor(R.color.inactive_bottom_nav_color)
+        xAxis.textColor = resources.getColor(R.color.grey_color)
         xAxis.setDrawGridLines(true)
         xAxis.gridColor = resources.getColor(R.color.graph_grid_color)
         xAxis.gridLineWidth = 1.2f
@@ -210,7 +210,7 @@ class LinksFragment : Fragment() {
         lYAxis.labelCount = 5
         lYAxis.spaceTop = 0f
         lYAxis.spaceBottom = 0f
-        lYAxis.textColor = resources.getColor(R.color.inactive_bottom_nav_color)
+        lYAxis.textColor = resources.getColor(R.color.grey_color)
         lYAxis.setDrawGridLines(true)
         lYAxis.setDrawAxisLine(false)
         lYAxis.gridColor = resources.getColor(R.color.graph_grid_color)
