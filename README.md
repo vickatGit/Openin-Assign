@@ -1,5 +1,8 @@
 # 📱 Openin Clone
 
+
+Link to Assignment APK : https://drive.google.com/file/d/1FqErf9FEK3hctuhygi8BGjByEA6g04Uo/view?usp=drivesdk
+
 ## Description
 
 Welcome to the Openin Clone project repository! This repository contains a clone of the Openin app, which addresses the issue of social media links redirecting to web browsers instead of their respective apps.
@@ -31,7 +34,7 @@ To enhance user experience, we have developed OpeninApp, a tool that ensures soc
 
 To install the Openin Clone app on your Android device, please follow these steps:
 
-1. Download the APK file from the following link: [Openin Clone APK](insert_link_here)
+1. Download the APK file from the following link: [Openin Clone APK](https://drive.google.com/file/d/1FqErf9FEK3hctuhygi8BGjByEA6g04Uo/view?usp=drivesdk)
 
 2. Ensure that you have enabled installation from unknown sources on your Android device. You can do this by going to Settings > Security (or Privacy) > Unknown Sources and enabling the option.
 
