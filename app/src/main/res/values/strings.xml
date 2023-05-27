@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Listed</string>
+    <string name="auth_token">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU5MjcsImlhdCI6MTY3NDU1MDQ1MH0.dCkW0ox8tbjJA2GgUx2UEwNlbTZ7Rr38PVFJevYcXFI</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="campaign_page_title">Campaign</string>
+    <string name="courses_page_title">Courses</string>
+    <string name="dashboard_page_title">Dashboard</string>
+    <string name="profile_page_title">Profile</string>
+</resources>

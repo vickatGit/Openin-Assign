@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/link"
+        android:title="Link"
+        android:icon="@drawable/link_icon"
+        app:showAsAction="always"/>
+
+
+    <item
+        android:id="@+id/courses"
+        android:title="Courses"
+        android:icon="@drawable/course_icon"
+        app:showAsAction="always"/>
+
+    <item
+        android:title=""
+        android:enabled="false"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/campaign"
+        android:title="Campaign"
+        android:icon="@drawable/campaign_icon"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/profile"
+        android:title="Profile"
+        android:icon="@drawable/user_avatar_icon"
+        app:showAsAction="always"/>
+
+</menu>

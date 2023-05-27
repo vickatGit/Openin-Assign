@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="30dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:paddingBottom="5dp"
+        android:background="@drawable/link_item_base_info_bg"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="15dp"
+
+            app:cardCornerRadius="7dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/light_gray"
+            app:strokeWidth="1dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/link_thumb"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                 />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/website_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toEndOf="@+id/materialCardView"
+            app:layout_constraintTop_toTopOf="@+id/materialCardView"
+            tools:text="Sample lInk Name" />
+
+        <TextView
+            android:id="@+id/timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="22 Aug 2022"
+            android:textSize="14sp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/inactive_bottom_nav_color"
+            app:layout_constraintStart_toStartOf="@+id/website_name"
+            app:layout_constraintTop_toBottomOf="@+id/website_name" />
+
+        <TextView
+            android:id="@+id/total_clicks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/website_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/website_name"
+            tools:text="2323" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clicks"
+            android:textSize="14sp"
+            android:textColor="@color/inactive_bottom_nav_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/total_clicks"
+            app:layout_constraintTop_toTopOf="@+id/timestamp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/link_item_link_bg"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="8dp"
+
+        android:layout_weight="0.9"
+        android:orientation="horizontal">
+        
+        <TextView
+            android:id="@+id/url"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:layout_weight="0.9"
+            android:ellipsize="marquee"
+            android:paddingVertical="3dp"
+            tools:text="https://www.google.com"
+            android:textColor="@color/blue"
+            android:textSize="15sp"/>
+
+        <ImageView
+            android:id="@+id/copy"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_gravity="end"
+            android:src="@drawable/copy_icon"
+            android:layout_weight="0.1"/>
+
+
+
+        
+    </LinearLayout>
+
+</LinearLayout>
