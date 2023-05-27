@@ -1,5 +1,15 @@
 # 📱 Openin Clone
 
+<div>
+  <img src="https://github.com/vickatGit/Openin-Assign/assets/96293449/adece6a0-b195-4bf6-aed9-45c761cea7ca"  width="300" alt="Image 1" style="float: left; margin-right: 50px;">
+  <img src="https://github.com/vickatGit/Openin-Assign/assets/96293449/b8387b3f-84d6-4a8c-bbe0-8bdf6b8518d4"  width="300" alt="Image 2" style="float: left; margin-right: 50px;">
+  <img src="https://github.com/vickatGit/Openin-Assign/assets/96293449/14b67e14-49f9-4bcc-884d-1589f1b718ab"  width="300" alt="Image 2" style="float: left; margin-right: 50px;">
+  <img src="https://github.com/vickatGit/Openin-Assign/assets/96293449/fdaca8f1-577d-4ed7-b298-f98a5e4ada1e"  width="300" alt="Image 2" style="float: left; margin-right: 50px;">
+  <img src="https://github.com/vickatGit/Openin-Assign/assets/96293449/6de62911-6eed-41a1-90ee-b3bc67f3f566"  width="300" alt="Image 2" style="float: left; margin-right: 50px;">
+  <img src="https://github.com/vickatGit/Openin-Assign/assets/96293449/a76b5418-dd23-4576-939e-4f0ef5ddb4cf"  width="300" alt="Image 2" style="float: left; margin-right: 50px;">
+  <img src="https://github.com/vickatGit/Openin-Assign/assets/96293449/9bc98a24-b3bd-4310-b88d-3e89b80e5709"  width="300" alt="Image 2" style="float: left; margin-right: 50px;">
+</div>
+
 
 Link to Assignment APK : https://drive.google.com/file/d/1FqErf9FEK3hctuhygi8BGjByEA6g04Uo/view?usp=drivesdk
 
