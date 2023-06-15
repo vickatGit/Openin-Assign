@@ -37,6 +37,9 @@ android {
     configurations {
         implementation.exclude module: 'support-compat'
     }
+    viewBinding{
+        enabled true
+    }
 }
 
 dependencies {

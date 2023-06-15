@@ -3,6 +3,7 @@ package com.example.listed.ui.fragment
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,6 +23,10 @@ import com.example.listed.R
 import com.example.listed.data.model.DashboardResponseModel
 import com.example.listed.data.model.OverallUrlChart
 import com.example.listed.data.model.TopLinksItem
+import com.example.listed.databinding.ActivityMainBinding
+import com.example.listed.databinding.FragmentLinksBinding
+import com.example.listed.ui.activity.AllLinksActivity
+import com.example.listed.ui.activity.MainActivity
 import com.example.listed.ui.listener.CopyListener
 import com.example.listed.ui.util.DashboardState
 import com.example.listed.ui.adapter.LinksAdapter
@@ -46,22 +51,12 @@ import java.util.*
 @AndroidEntryPoint
 class LinksFragment : Fragment() {
 
+    private var _binding: FragmentLinksBinding?=null
+    private val binding get()=_binding!!
 
     private val homePageViewModel: HomePageViewModel by viewModels()
-    private lateinit var allLinkListener: AllLinkListener
-
-    private lateinit var greetings: TextView
-    private lateinit var userName: TextView
-    private lateinit var todayClicks: TextView
-    private lateinit var topLocation: TextView
-    private lateinit var topSource: TextView
-    private lateinit var linkTabs: ChipGroup
     private var linksList: ArrayList<TopLinksItem?>? = ArrayList()
     private lateinit var linksAdapter: LinksAdapter
-    private lateinit var linksRecycler: RecyclerView
-    private lateinit var lineChart: LineChart
-    private lateinit var progress: ProgressBar
-    private lateinit var allLinks: Button
 
     private var clickDates: ArrayList<String> = ArrayList()
     private lateinit var dashboardData: DashboardResponseModel
@@ -72,29 +67,22 @@ class LinksFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
     }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is AllLinkListener) {
-            allLinkListener = activity as AllLinkListener
-        }
-    }
-
+    
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_links, container, false)
-        initialiseViews(view)
+        
+        _binding=FragmentLinksBinding.inflate(inflater,container,false);
+        
         linksAdapter = LinksAdapter(linksList, object : CopyListener {
             override fun linkClick(link: String) {
                 saveToClipboard(this@LinksFragment.requireContext(), link)
             }
         })
-        linksRecycler.layoutManager = LinearLayoutManager(this@LinksFragment.requireContext())
-        linksRecycler.adapter = linksAdapter
-        greetings.text = homePageViewModel.getGreetings()
+        binding.linksRecycler.layoutManager = LinearLayoutManager(this@LinksFragment.requireContext())
+        binding.linksRecycler.adapter = linksAdapter
+        binding.greet.text = homePageViewModel.getGreetings()
 
         lifecycleScope.launch {
             homePageViewModel.loadState.collectLatest {
@@ -116,7 +104,7 @@ class LinksFragment : Fragment() {
         }
         homePageViewModel.getHomePageData()
         homePageViewModel.getGreetings()
-        linkTabs.setOnCheckedStateChangeListener { group, checkedIds ->
+        binding.linkTabs.setOnCheckedStateChangeListener { group, checkedIds ->
             if (checkedIds.contains(R.id.top_links)) {
                 linksList?.clear()
                 val list = dashboardData.data?.top_links
@@ -144,25 +132,29 @@ class LinksFragment : Fragment() {
                 }
             }
         }
-        allLinks.setOnClickListener {
-            when(linkTabs.checkedChipId ){
+        binding.viewAllLiinks.setOnClickListener {
+            when(binding.linkTabs.checkedChipId ){
                 R.id.top_links -> {
-                    allLinkListener.onClick(dashboardData.data?.top_links)
+                    val intent= Intent(requireContext(), AllLinksActivity::class.java)
+                    intent.putParcelableArrayListExtra(MainActivity.LINKS_DATA_MSG, dashboardData.data?.top_links)
+                    startActivity(intent)
                 }
                 R.id.recent_links -> {
-                    allLinkListener.onClick(dashboardData.data?.recent_links)
+                    val intent= Intent(requireContext(), AllLinksActivity::class.java)
+                    intent.putParcelableArrayListExtra(MainActivity.LINKS_DATA_MSG, dashboardData.data?.recent_links)
+                    startActivity(intent)
                 }
             }
         }
 
-        return view;
+        return binding.root;
     }
 
     private fun bindDataToHomePage(dashboardData: DashboardResponseModel) {
-        todayClicks.text = dashboardData.today_clicks.toString()
-        topLocation.text = dashboardData.top_location.toString()
-        topSource.text = dashboardData.top_source.toString()
-        linkTabs.check(R.id.top_links)
+        binding.todaysClicks.text = dashboardData.today_clicks.toString()
+        binding.topLocation.text = dashboardData.top_location.toString()
+        binding.topSource.text = dashboardData.top_source.toString()
+        binding.linkTabs.check(R.id.top_links)
         modifyChartData(dashboardData.data?.overall_url_chart)
         initialiseChart()
 
@@ -193,7 +185,7 @@ class LinksFragment : Fragment() {
 
         val lineData = LineData(dataSets)
 
-        val xAxis: XAxis = lineChart.xAxis
+        val xAxis: XAxis = binding.clicksGraph.xAxis
         xAxis.position = XAxis.XAxisPosition.BOTTOM
         xAxis.textColor = resources.getColor(R.color.grey_color)
         xAxis.setDrawGridLines(true)
@@ -202,11 +194,11 @@ class LinksFragment : Fragment() {
         xAxis.valueFormatter =
             IndexAxisValueFormatter(clickDates) // Custom formatter for x-axis labels
 
-        val rYAxis = lineChart.axisRight
+        val rYAxis = binding.clicksGraph.axisRight
         rYAxis.isEnabled = false
 
 
-        val lYAxis = lineChart.axisLeft
+        val lYAxis = binding.clicksGraph.axisLeft
         lYAxis.labelCount = 5
         lYAxis.spaceTop = 0f
         lYAxis.spaceBottom = 0f
@@ -217,20 +209,20 @@ class LinksFragment : Fragment() {
         lYAxis.gridLineWidth = 1.2f
 
 
-        lineChart.description.isEnabled = false
-        lineChart.legend.isEnabled = false
-        lineChart.setTouchEnabled(false)
-        lineChart.isDragEnabled = false
-        lineChart.setScaleEnabled(false)
-        lineChart.setPinchZoom(false)
-        lineChart.isDoubleTapToZoomEnabled = false
-        lineChart.isHighlightPerTapEnabled = false
-        lineChart.isHighlightPerDragEnabled = false
-        lineChart.animateX(1000)
+        binding.clicksGraph.description.isEnabled = false
+        binding.clicksGraph.legend.isEnabled = false
+        binding.clicksGraph.setTouchEnabled(false)
+        binding.clicksGraph.isDragEnabled = false
+        binding.clicksGraph.setScaleEnabled(false)
+        binding.clicksGraph.setPinchZoom(false)
+        binding.clicksGraph.isDoubleTapToZoomEnabled = false
+        binding.clicksGraph.isHighlightPerTapEnabled = false
+        binding.clicksGraph.isHighlightPerDragEnabled = false
+        binding.clicksGraph.animateX(1000)
 
 
-        lineChart.data = lineData
-        lineChart.invalidate()
+        binding.clicksGraph.data = lineData
+        binding.clicksGraph.invalidate()
     }
 
     private fun modifyChartData(overallUrlChart: OverallUrlChart?) {
@@ -260,19 +252,6 @@ class LinksFragment : Fragment() {
         ).show()
     }
 
-    private fun initialiseViews(view: View) {
-        greetings = view.findViewById(R.id.greet)
-        userName = view.findViewById(R.id.user_name)
-        topLocation = view.findViewById(R.id.top_location)
-        todayClicks = view.findViewById(R.id.todays_clicks)
-        topSource = view.findViewById(R.id.top_source)
-        linkTabs = view.findViewById(R.id.link_tabs)
-        linksRecycler = view.findViewById(R.id.links_recycler)
-        lineChart = view.findViewById(R.id.clicks_graph)
-        progress = view.findViewById(R.id.progress)
-        allLinks = view.findViewById(R.id.view_all_liinks)
-
-    }
 
     private fun formatDate(date: String): String {
         val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
@@ -288,11 +267,11 @@ class LinksFragment : Fragment() {
     }
 
     private fun showProgress() {
-        progress.isVisible = true;
+        binding.progress.isVisible = true;
     }
 
     private fun hideProgress() {
-        progress.isVisible = false
+        binding.progress.isVisible = false
     }
 
 }

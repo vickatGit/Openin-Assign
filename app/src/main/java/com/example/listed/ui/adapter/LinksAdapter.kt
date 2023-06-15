@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import coil.load
 import com.example.listed.R
 import com.example.listed.data.model.TopLinksItem
+import com.example.listed.databinding.LinkItemBinding
 import com.example.listed.ui.listener.CopyListener
 import java.text.SimpleDateFormat
 import java.util.*
@@ -26,20 +27,19 @@ class LinksAdapter(val linkList: ArrayList<TopLinksItem?>?,val  copyListener: Co
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LinkHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.link_item_, parent, false)
-        return LinkHolder(view)
+        return LinkHolder(LinkItemBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
     override fun onBindViewHolder(holder: LinkHolder, position: Int) {
         val linkItem = filteredList?.get(holder.adapterPosition)
-        holder.siteName.text = linkItem?.app
-        holder.totalLinkClicks.text = linkItem?.total_clicks.toString()
-        holder.siteLink.text = linkItem?.web_link
-        holder.linkCreationTime.text = formatToNormalDate(linkItem?.created_at.toString())
-        holder.copyLink.setOnClickListener {
+        holder.binding.websiteName.text = linkItem?.app
+        holder.binding.totalClicks.text = linkItem?.total_clicks.toString()
+        holder.binding.url.text = linkItem?.web_link
+        holder.binding.timestamp.text = formatToNormalDate(linkItem?.created_at.toString())
+        holder.binding.copy.setOnClickListener {
             linkItem?.web_link?.let { it1 -> copyListener.linkClick(it1) }
         }
-        holder.siteThumb.load(linkItem?.original_image){
+        holder.binding.linkThumb.load(linkItem?.original_image){
             placeholder(R.drawable.link_icon)
         }
     }
@@ -48,14 +48,7 @@ class LinksAdapter(val linkList: ArrayList<TopLinksItem?>?,val  copyListener: Co
         return filteredList?.size!!
     }
 
-    class LinkHolder(itemView: View) : ViewHolder(itemView) {
-        val siteThumb: ImageView = itemView.findViewById(R.id.link_thumb)
-        val siteName: TextView = itemView.findViewById(R.id.website_name);
-        val linkCreationTime: TextView = itemView.findViewById(R.id.timestamp)
-        val totalLinkClicks: TextView = itemView.findViewById(R.id.total_clicks);
-        val siteLink: TextView = itemView.findViewById(R.id.url)
-        val copyLink: ImageView = itemView.findViewById(R.id.copy);
-    }
+    inner class LinkHolder(val binding: LinkItemBinding) : ViewHolder(binding.root) {}
 
     fun formatToNormalDate(inputDate: String): String {
         return try {
